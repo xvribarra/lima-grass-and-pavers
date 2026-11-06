@@ -465,14 +465,14 @@
           Get Your Free Estimate Today
         </h2>
         <p class="text-gray-600 mb-8" data-i18n="contact_desc">
-          Call, text, or send us a message. We respond promptly and schedule on-site visits across the Phoenix metropolitan area.
+          Call us directly or send us an email. We respond promptly and schedule on-site visits across the Phoenix metropolitan area.
         </p>
 
         <div class="space-y-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
           <div class="flex items-start space-x-4">
             <div class="bg-brandBlue/10 text-brandBlue p-3 rounded-xl font-bold">📞</div>
             <div>
-              <span class="block text-xs font-bold uppercase text-gray-500" data-i18n="c_phone_label">Phone / WhatsApp / Text</span>
+              <span class="block text-xs font-bold uppercase text-gray-500" data-i18n="c_phone_label">Phone / Direct Call</span>
               <a href="tel:6024728846" class="text-xl font-extrabold text-brandBlue hover:underline">(602) 472-8846</a>
             </div>
           </div>
@@ -543,12 +543,13 @@
 
           <div class="flex flex-col sm:flex-row gap-3">
             <button type="submit" class="flex-1 bg-brandGreen hover:bg-green-700 text-white font-extrabold py-4 px-6 rounded-xl shadow transition text-center" data-i18n="f_submit">
-              Send Quote Request via Text / WhatsApp
+              ✉️ Send Quote Request via Email
             </button>
-            <a href="tel:6024728846" class="bg-brandBlue hover:bg-brandBlueDark text-white font-bold py-4 px-6 rounded-xl text-center transition">
+            <a href="tel:6024728846" class="bg-brandBlue hover:bg-brandBlueDark text-white font-bold py-4 px-6 rounded-xl text-center transition" data-i18n="f_call">
               📞 Call (602) 472-8846
             </a>
           </div>
+          <p id="formFeedback" class="hidden mt-4 text-sm text-brandGreen font-semibold text-center bg-green-50 border border-green-200 rounded-xl p-3"></p>
         </form>
       </div>
     </div>
@@ -644,8 +645,8 @@
         est_send_btn: "Send to Free Estimate Form ↓",
         contact_eyebrow: "Direct Contact",
         contact_title: "Get Your Free Estimate Today",
-        contact_desc: "Call, text, or send us a message. We respond promptly and schedule on-site visits across the Phoenix metropolitan area.",
-        c_phone_label: "Phone / WhatsApp / Text",
+        contact_desc: "Call us directly or send us an email. We respond promptly and schedule on-site visits across the Phoenix metropolitan area.",
+        c_phone_label: "Phone / Direct Call",
         c_addr_label: "Office & Base Location",
         c_areas: "Serving Phoenix, Glendale, Peoria, Scottsdale, Tempe, Mesa, Avondale & Chandler",
         c_hours_label: "Working Hours",
@@ -656,7 +657,8 @@
         f_zip: "City or ZIP Code *",
         f_service: "Primary Service Needed",
         f_msg: "Project Details",
-        f_submit: "Send Quote Request via Text / WhatsApp",
+        f_submit: "✉️ Send Quote Request via Email",
+        f_call: "📞 Call (602) 472-8846",
         mob_cta: "Free Estimate"
       },
       es: {
@@ -720,8 +722,8 @@
         est_send_btn: "Enviar al Formulario de Estimado ↓",
         contact_eyebrow: "Contacto Directo",
         contact_title: "Solicita tu Estimado Gratis Hoy",
-        contact_desc: "Llámanos, manda mensaje de texto o WhatsApp. Atendemos rápido en todo el valle de Phoenix.",
-        c_phone_label: "Teléfono / WhatsApp / Mensajes",
+        contact_desc: "Llámanos directamente o envíanos un correo electrónico. Atendemos rápido en todo el valle de Phoenix.",
+        c_phone_label: "Teléfono / Llamada Directa",
         c_addr_label: "Ubicación Base",
         c_areas: "Servicio en Phoenix, Glendale, Peoria, Scottsdale, Tempe, Mesa, Avondale y Chandler",
         c_hours_label: "Horario de Trabajo",
@@ -732,7 +734,8 @@
         f_zip: "Ciudad o Código Postal *",
         f_service: "Servicio Principal",
         f_msg: "Detalles de tu Proyecto",
-        f_submit: "Enviar Solicitud por WhatsApp / SMS",
+        f_submit: "✉️ Enviar Solicitud por Correo (Email)",
+        f_call: "📞 Llamar al (602) 472-8846",
         mob_cta: "Estimado Gratis"
       }
     };
@@ -746,6 +749,10 @@
           el.innerText = translations[currentLang][key];
         }
       });
+      document.getElementById('leadName').placeholder = currentLang === 'en' ? 'John Smith' : 'Juan Pérez';
+      document.getElementById('leadDetails').placeholder = currentLang === 'en'
+        ? 'Tell us about your patio, driveway, or yard...'
+        : 'Cuéntanos sobre tu patio, entrada o jardín...';
       updateEstimator();
     }
 
@@ -803,15 +810,23 @@
       const service = document.getElementById('leadService').value;
       const details = document.getElementById('leadDetails').value;
 
-      const textMsg = encodeURIComponent(
-        `Hello Lima Grass & Pavers! I'd like a Free Estimate.\n` +
-        `• Name: ${name}\n` +
-        `• Phone: ${phone}\n` +
-        `• Location: ${zip}\n` +
-        `• Service: ${service}\n` +
-        `• Notes: ${details || 'N/A'}`
+      const subject = encodeURIComponent(`Free Estimate Request — ${name} (${service})`);
+      const body = encodeURIComponent(
+        `Hello Lima Grass & Pavers,\n\nI would like to request a Free On-Site Estimate:\n\n` +
+        `• Full Name: ${name}\n` +
+        `• Phone Number: ${phone}\n` +
+        `• City / ZIP Code: ${zip}\n` +
+        `• Primary Service: ${service}\n` +
+        `• Project Details: ${details || 'N/A'}\n`
       );
-      window.open(`https://wa.me/16024728846?text=${textMsg}`, '_blank');
+
+      const feedback = document.getElementById('formFeedback');
+      feedback.classList.remove('hidden');
+      feedback.innerText = currentLang === 'en'
+        ? 'Opening your email app to send your request to franciscolugo977@gmail.com — or call us directly at (602) 472-8846.'
+        : 'Abriendo tu aplicación de correo para enviar tu solicitud a franciscolugo977@gmail.com — o llámanos al (602) 472-8846.';
+
+      window.location.href = `mailto:franciscolugo977@gmail.com?subject=${subject}&body=${body}`;
     }
   </script>
 </body>
