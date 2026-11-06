@@ -117,3 +117,4 @@ Landing page bilingüe (EN/ES) de alta conversión diseñada para **Lima Grass &
    ```bash
    vercel --prod
    ```
+
