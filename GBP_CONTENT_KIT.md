@@ -134,3 +134,4 @@ Google indexa los metadatos y la temática visual de las fotos del perfil. Sube 
 
 ### Plantilla para Responder Reseñas Positivas (Con Keywords de SEO Local)
 > *"Thank you so much, [Client Name]! It was a pleasure installing your new [travertine pool deck / paver patio / artificial grass] here in [Phoenix / City]. Enjoy your new outdoor space, and let us know whenever you need anything else! — Francisco & the Lima Grass & Pavers team."*
+

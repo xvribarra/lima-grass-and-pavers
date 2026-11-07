@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lima-grass-and-pavers.vercel.app/sitemap.xml

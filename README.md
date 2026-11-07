@@ -9,6 +9,9 @@ Landing page bilingüe (EN/ES) de alta conversión diseñada para **Lima Grass &
 ```text
 .
 ├── index.html                        # Landing page principal (Tailwind CSS + Schema JSON-LD + Calculadora + i18n EN/ES)
+├── robots.txt                        # Directivas para crawlers y referencia a sitemap.xml
+├── sitemap.xml                       # Sitemap XML listo para Google Search Console
+├── GBP_CONTENT_KIT.md                # Textos, servicios, Q&A y publicaciones listas para Google Business Profile
 ├── assets/
 │   └── images/
 │       ├── hero-curved-patio.jpg     # Hero & Servicio de Zacate Artificial / Patio Curvo
@@ -75,7 +78,7 @@ Landing page bilingüe (EN/ES) de alta conversión diseñada para **Lima Grass &
 
 ---
 
-### 3. Configuración de Llamadas, WhatsApp y SMS Directo para `(602) 472-8846`
+### 3. Configuración de Métodos de Contacto Activos (`(602) 472-8846` y Correo)
 
 - [ ] **Paso 3.1 — Botones de Llamada Directa (`tel:`):**
   - Todos los botones de llamada en el encabezado, Hero, sección de contacto y barra flotante móvil utilizan el protocolo estándar:
@@ -83,20 +86,10 @@ Landing page bilingüe (EN/ES) de alta conversión diseñada para **Lima Grass &
     <a href="tel:6024728846">📞 (602) 472-8846</a>
     ```
   - Verifica en iOS y Android que al tocar el botón se abra el marcador telefónico con `(602) 472-8846`.
-- [ ] **Paso 3.2 — Envío de Cotizaciones por WhatsApp (`wa.me`):**
-  - El formulario interactivo (`handleLeadSubmit` en `index.html`) construye automáticamente el mensaje prellenado con nombre, teléfono, código postal, servicio y área estimada, redirigiendo a:
-    ```text
-    https://wa.me/16024728846?text=Hello%20Lima%20Grass%20%26%20Pavers!...
-    ```
-  - **Requisito en el teléfono del negocio:** Asegúrate de tener instalado **WhatsApp Business** activo con el número `+1 (602) 472-8846`, mensaje de bienvenida automático en inglés/español y catálogo básico de servicios.
-- [ ] **Paso 3.3 — Enlace Directo a SMS Nativo (`sms:`) (Alternativa o Botón Secundario):**
-  - Para clientes en EE. UU. que prefieran mensaje de texto SMS nativo en lugar de WhatsApp, puedes usar el esquema `sms:` compatible con iOS y Android:
-    ```html
-    <a href="sms:+16024728846?&body=Hi%20Lima%20Grass%20%26%20Pavers,%20I%20would%20like%20a%20free%20estimate.">
-      💬 Text Us: (602) 472-8846
-    </a>
-    ```
-  - **En Google Business Profile:** Activa la opción de **Mensajes / Chat por SMS o WhatsApp** dentro del panel de Google Business Profile vinculando el número `(602) 472-8846` o la URL `https://wa.me/16024728846`.
+- [ ] **Paso 3.2 — Envío de Cotizaciones por Correo Electrónico (`mailto:`):**
+  - El formulario interactivo (`handleLeadSubmit` en `index.html`) construye automáticamente el asunto y cuerpo con nombre, teléfono, código postal, servicio y área estimada, enviándolo a `franciscolugo977@gmail.com`.
+- [ ] **Paso 3.3 — (Opcional a futuro) Activación de WhatsApp / SMS Directo:**
+  - Cuando el cliente habilite mensajería directa, se puede reactivar `https://wa.me/16024728846?text=...` o el protocolo nativo `sms:+16024728846?&body=...`.
 
 ---
 
